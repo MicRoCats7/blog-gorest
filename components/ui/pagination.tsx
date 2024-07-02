@@ -52,6 +52,7 @@ const PaginationLink = ({
         variant: isActive ? "outline" : "ghost",
         size,
       }),
+      { 'pointer-events-none opacity-50': props['aria-disabled'] },
       className
     )}
     {...props}

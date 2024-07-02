@@ -1,4 +1,4 @@
-import ListBlog from "@/components/shared/ListBlog";
+import ListBlog from "@/components/shared/Bloglist/ListBlog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";

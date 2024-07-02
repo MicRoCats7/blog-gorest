@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 const Footer = () => {
   return (
     <footer className="border-t">
@@ -11,14 +9,10 @@ const Footer = () => {
           <div>
             <ul className="flex flex-col md:flex-row text-center md:gap-5 gap-2">
               <li>
-                <Link href="/privacy-policy">
-                  <span className="text-sm text-gray-500">Privacy Policy</span>
-                </Link>
+                <span className="text-sm text-gray-500">Privacy Policy</span>
               </li>
               <li>
-                <Link href="/terms-of-service">
-                  <span className="text-sm text-gray-500">Terms of Service</span>
-                </Link>
+                <span className="text-sm text-gray-500">Terms of Service</span>
               </li>
             </ul>
           </div>

@@ -1,33 +1,32 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Card from './Card';
 import { fetchPosts } from '@/service/api';
-import { useRouter } from 'next/navigation';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import Link from 'next/link';
-import Pagination from './Pagination';
+import PaginationList from '../Pagination';
+import { Post } from '@/types';
 
 const ListBlog = () => {
-    const router = window.location.pathname;
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<Post[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-
     const [page, setPage] = useState<number>(1);
+    const [hasNextPage, setHasNextPage] = useState<boolean>(true);
     const pageSize = 6;
 
     useEffect(() => {
         const getPosts = async () => {
+            setLoading(true);
             try {
-                let response;
-                if (router === '/') {
-                    response = await fetchPosts(1);
-                    setData(response.data.slice(0, pageSize));
+                const response = await fetchPosts(page);
+                if (response.data.length < pageSize) {
+                    setHasNextPage(false);
                 } else {
-                    response = await fetchPosts(page);
-                    setData(response.data);
+                    setHasNextPage(true);
                 }
+                setData(response.data.slice(0, pageSize));
             } catch (err) {
                 setError('Failed to load');
             } finally {
@@ -36,7 +35,7 @@ const ListBlog = () => {
         };
 
         getPosts();
-    }, [page, router]);
+    }, [page]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
@@ -51,13 +50,12 @@ const ListBlog = () => {
                         </li>
                     ))}
                 </ul>
-
-                {router !== '/' && (
+                {window.location.pathname === '/bloglist' && (
                     <div className="flex justify-center mt-5">
-                        <Pagination />
+                        <PaginationList currentPage={page} onPageChange={setPage} hasNextPage={hasNextPage} />
                     </div>
                 )}
-                {router === '/' && (
+                {window.location.pathname === '/' && (
                     <div className="mt-5">
                         <Button
                             size='lg'
@@ -66,7 +64,7 @@ const ListBlog = () => {
                border-black hover:bg-black hover:text-white
                rounded-full w-full sm:w-fit"
                         >
-                            <Link href="#listblog">
+                            <Link href="/bloglist">
                                 See more blogs
                             </Link>
                         </Button>

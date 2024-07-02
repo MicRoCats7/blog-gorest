@@ -8,28 +8,59 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-} from "@/components/ui/pagination"
+} from "@/components/ui/pagination";
 
-const PaginationList = () => {
+interface PaginationListProps {
+    currentPage: number;
+    onPageChange: (page: number) => void;
+    hasNextPage: boolean;
+}
+
+const PaginationList: React.FC<PaginationListProps> = ({ currentPage, onPageChange, hasNextPage }) => {
+    const handlePageChange = (page: number) => {
+        if (page > 0 && hasNextPage) {
+            onPageChange(page);
+        }
+    };
 
     return (
         <Pagination>
             <PaginationContent>
                 <PaginationItem>
-                    <PaginationPrevious href="#" />
+                    <PaginationPrevious
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        href="#"
+                        aria-disabled={currentPage === 1}
+                    />
                 </PaginationItem>
                 <PaginationItem>
-                    <PaginationLink href="#">1</PaginationLink>
+                    <PaginationLink
+                        href="#"
+                        onClick={() => handlePageChange(currentPage)}
+                        isActive={true}
+                    >
+                        {currentPage}
+                    </PaginationLink>
                 </PaginationItem>
+                {hasNextPage && (
+                    <PaginationItem>
+                        <PaginationLink
+                            href="#"
+                            onClick={() => handlePageChange(currentPage + 1)}
+                        >
+                            {currentPage + 1}
+                        </PaginationLink>
+                    </PaginationItem>
+                )}
                 <PaginationItem>
-                    <PaginationEllipsis />
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationNext href="#" />
+                    <PaginationNext
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        href="#"
+                        aria-disabled={!hasNextPage}
+                    />
                 </PaginationItem>
             </PaginationContent>
         </Pagination>
-
     );
 };
 
