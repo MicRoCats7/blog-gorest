@@ -32,10 +32,10 @@ export default function Home() {
               asChild
               className="bg-transparent text-black border-[1px]
                border-black hover:bg-black hover:text-white
-               rounded-full w-full sm:w-fit"
+               rounded-full w-full sm:w-fit cursor-pointer"
               onClick={handleScroll}
             >
-              <span>Explore Blog</span>
+              <span className="cursor-pointer">Explore Blog</span>
             </Button>
           </div>
           <div className="justify-end md:flex hidden">
