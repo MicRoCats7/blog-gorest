@@ -1,3 +1,5 @@
+'use client'
+
 import {
     Sheet,
     SheetContent,
@@ -6,12 +8,16 @@ import {
 import Image from "next/image"
 import { Separator } from "../ui/separator"
 import NavItems from "./NavItems"
+import { useState } from "react"
 
 
 const MobileNav = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const closeSheet = () => setIsOpen(false);
+
     return (
         <nav className="md:hidden">
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger className="align-middle">
                     <Image
                         src="/assets/menu.svg"
@@ -24,10 +30,9 @@ const MobileNav = () => {
                 <SheetContent className="flex flex-col gap-6 bg-white md:hidden">
                     <span className="text-4xl font-bold text-[#2D2D2D]">Blog</span>
                     <Separator className="border border-gray-50" />
-                    <NavItems />
+                    <NavItems closeSheet={closeSheet} />
                 </SheetContent>
             </Sheet>
-
         </nav>
     )
 }

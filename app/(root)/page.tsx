@@ -1,9 +1,19 @@
+'use client';
+
 import ListBlog from "@/components/shared/Bloglist/ListBlog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
+import { useRef } from "react";
 
 export default function Home() {
+  const listBlogRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (listBlogRef.current) {
+      listBlogRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <section className="bg-[#F6F8FD]">
@@ -23,13 +33,12 @@ export default function Home() {
               className="bg-transparent text-black border-[1px]
                border-black hover:bg-black hover:text-white
                rounded-full w-full sm:w-fit"
+              onClick={handleScroll}
             >
-              <Link href="#listblog">
-                Explore Blog
-              </Link>
+              <span>Explore Blog</span>
             </Button>
           </div>
-          <div className="flex justify-end">
+          <div className="justify-end md:flex hidden">
             <Image
               src='/assets/person_home.svg'
               alt="Hero Image"
@@ -40,7 +49,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="#listblog" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+      <section ref={listBlogRef} className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold">List Blog</h2>
         <ListBlog />
       </section>

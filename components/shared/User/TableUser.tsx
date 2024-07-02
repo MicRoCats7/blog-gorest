@@ -139,7 +139,7 @@ export function TableUser() {
             <DialogNewUser
                 open={openNewUserDialog}
                 setOpen={setOpenNewUserDialog}
-                setData={setData}
+                setData={setFilteredData}
                 page={page}
             />
             <DialogDetailUser
@@ -150,14 +150,14 @@ export function TableUser() {
             <DialogEditUser
                 open={openEditDialog}
                 setOpen={setOpenEditDialog}
-                setData={setData}
+                setData={setFilteredData}
                 page={page}
                 user={selectedUser}
             />
             <DialogDelete
                 open={openDeleteDialog}
                 setOpen={setOpenDeleteDialog}
-                setData={setData}
+                setData={setFilteredData}
                 page={page}
                 user={selectedUser}
             />

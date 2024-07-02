@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { SelectGender } from "../Bloglist/SelectGender";
 import { useState } from "react";
 import { createUser, fetchUsers } from "@/service/api";
+import { toast } from "react-toastify";
 
 const genderOptions = [
     {
@@ -70,6 +71,7 @@ export function DialogNewUser({ open, setOpen, setData, page }: DialogUserProps)
             setSelectedGender("");
             setSelectedStatus("");
             setOpen(false);
+            toast.success("User added successfully");
 
             // Mengambil ulang data pengguna setelah penambahan user
             const response = await fetchUsers(page);

@@ -12,6 +12,7 @@ import { SelectGender } from "../Bloglist/SelectGender";
 import { useEffect, useState } from "react";
 import { fetchUsers, updateUser } from "@/service/api";
 import { User } from "@/types";
+import { toast } from "react-toastify";
 
 const genderOptions = [
     {
@@ -69,6 +70,7 @@ export function DialogEditUser({ open, setOpen, setData, page, user }: DialogEdi
             if (user) {
                 await updateUser(user.id, userData);
                 setOpen(false);
+                toast.success("Updated successfully");
 
                 // Mengambil ulang data pengguna setelah penambahan user
                 const response = await fetchUsers(page);

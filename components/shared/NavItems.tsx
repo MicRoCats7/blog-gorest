@@ -4,7 +4,7 @@ import { headerLinks } from "@/constants"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-const NavItems = () => {
+const NavItems = ({ closeSheet }: { closeSheet: any }) => {
     const pathname = usePathname()
 
     return (
@@ -14,6 +14,7 @@ const NavItems = () => {
                 return (
                     <li
                         key={link.route}
+                        onClick={closeSheet}
                         className={
                             `flex justify-center items-center text-base whitespace-nowrap
                              ${isActive ? "text-[#2D2D2D] font-semibold" : "text-[#A0A0A0]"}`

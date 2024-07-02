@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { deleteUser, fetchUsers } from "@/service/api";
 import { User } from "@/types";
+import { toast } from "react-toastify";
 
 interface DialogDeleteProps {
     open: boolean;
@@ -23,6 +24,7 @@ export function DialogDelete({ open, setOpen, setData, page, user }: DialogDelet
             if (user) {
                 await deleteUser(user.id);
                 setOpen(false);
+                toast.error("Deleted successfully");
 
                 // Mengambil ulang data pengguna setelah penambahan user
                 const response = await fetchUsers(page);
