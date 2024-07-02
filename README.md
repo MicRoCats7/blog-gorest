@@ -14,11 +14,15 @@ Project Blog Gorest API is designed to be easily extensible and maintainable, th
 ## Features
 
 - **Home Page**: The main page displays a list of articles with titles and summaries.
+  
 ![homepage](https://github.com/MicRoCats7/blog-gorest/blob/main/public/assets/homepage.png)
 - **Blog List**: This Blog List page displays all blogs on gorestapi and has pagination.
+  
 ![bloglist](https://github.com/MicRoCats7/blog-gorest/blob/main/public/assets/listblog.png)
+
 - **Post Detail**: Each article has a detail page with complete information and comments users.
 ![bloglist](https://github.com/MicRoCats7/blog-gorest/blob/main/public/assets/detailblog.png)
+
 - **CRUD Users**: Page to manage users, including creating, editing, and deleting users.
 ![crudusers](https://github.com/MicRoCats7/blog-gorest/blob/main/public/assets/pageuser.png)
 
