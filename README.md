@@ -42,13 +42,13 @@ Follow these steps to run the application locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ziyad1412/blog_nextjs.git
+   https://github.com/MicRoCats7/blog-gorest.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd blog_nextjs
+   cd blog-gorest
    ```
 
 3. Install dependencies:
