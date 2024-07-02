@@ -124,16 +124,16 @@ export function DialogNewUser({ open, setOpen, setData, page }: DialogUserProps)
                 </div>
                 <DialogFooter className="gap-4 md:gap-0">
                     <Button
-                        onClick={handleSubmit}
-                        className="bg-transparent text-black border-[1px] border-black hover:bg-black hover:text-white rounded-full w-full sm:w-auto"
-                    >
-                        Add User
-                    </Button>
-                    <Button
                         className="bg-transparent text-black border-[1px] border-black hover:bg-black hover:text-white rounded-full w-full sm:w-auto"
                         onClick={() => setOpen(false)}
                     >
                         Cancel
+                    </Button>
+                    <Button
+                        onClick={handleSubmit}
+                        className="bg-transparent text-black border-[1px] border-black hover:bg-black hover:text-white rounded-full w-full sm:w-auto"
+                    >
+                        Add User
                     </Button>
                 </DialogFooter>
             </DialogContent>
