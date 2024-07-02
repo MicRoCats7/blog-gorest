@@ -7,6 +7,10 @@ Project Synapsis Blog is a modern web application built with Next.js and TypeScr
 The integration with GoRest API allows for real-time updates and ensures that the content remains current and relevant. The application includes robust features such as search functionality, pagination for browsing through post. you can perform CRUD operations on users.
 Project Blog Gorest API is designed to be easily extensible and maintainable, thanks to its use of TypeScript for type safety and enhanced development workflows. Styling is handled efficiently with Tailwind CSS, enabling rapid prototyping and a cohesive visual identity. Deployment is streamlined with Vercel, ensuring global accessibility and scalability.
 
+## Performance
+
+![performance](https://github.com/MicRoCats7/blog-gorest/blob/main/public/assets/performance.png)
+
 ## Features
 
 - **Home Page**: The main page displays a list of articles with titles and summaries.
